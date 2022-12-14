@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
+            VALUE "CompanyName", "com.beautifuldestinations" "\0"
             VALUE "FileDescription", "beautiful_destinations" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "beautiful_destinations" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 com.beautifuldestinations. All rights reserved." "\0"
             VALUE "OriginalFilename", "beautiful_destinations.exe" "\0"
             VALUE "ProductName", "beautiful_destinations" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
