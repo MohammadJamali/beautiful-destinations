@@ -1,5 +1,5 @@
 import 'package:beautiful_destinations/extensions/enum_extension.dart';
-import 'package:beautiful_destinations/models/place_option.dart';
+import 'package:beautiful_destinations/repositories/models/place_option.dart';
 import 'package:beautiful_destinations/widgets/circle_button.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

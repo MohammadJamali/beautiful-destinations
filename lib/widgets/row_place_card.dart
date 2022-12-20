@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:beautiful_destinations/extensions/enum_extension.dart';
-import 'package:beautiful_destinations/models/place_option.dart';
+import 'package:beautiful_destinations/repositories/models/place_option.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

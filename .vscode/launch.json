@@ -5,38 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "beautiful_destinations",
+            "name": "debug",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "beautiful_destinations (profile mode)",
+            "name": "profile",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "beautiful_destinations (release mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
-        },
-        {
-            "name": "scroll_snap_list",
-            "cwd": "dependencies/scroll_snap_list",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "scroll_snap_list (profile mode)",
-            "cwd": "dependencies/scroll_snap_list",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "scroll_snap_list (release mode)",
-            "cwd": "dependencies/scroll_snap_list",
+            "name": "release",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

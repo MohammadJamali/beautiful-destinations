@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'package:beautiful_destinations/views/authentication/code.dart';
-import 'package:beautiful_destinations/views/authentication/login.dart';
-import 'package:beautiful_destinations/views/book/detail.dart';
-import 'package:beautiful_destinations/views/tiktok/explore_view.dart';
-import 'package:beautiful_destinations/views/landing/landing.dart';
-import 'package:beautiful_destinations/views/home/main.dart';
-import 'package:beautiful_destinations/views/navigation_menu/navigation_menu.dart';
-import 'package:beautiful_destinations/views/notification/notification.dart';
-import 'package:beautiful_destinations/views/search/filter.dart';
+import 'package:beautiful_destinations/app/authentication/code.dart';
+import 'package:beautiful_destinations/app/authentication/login.dart';
+import 'package:beautiful_destinations/app/book/detail.dart';
+import 'package:beautiful_destinations/app/home/search/filter.dart';
+import 'package:beautiful_destinations/app/tiktok/tiktok_video_view.dart';
+import 'package:beautiful_destinations/app/landing/landing.dart';
+import 'package:beautiful_destinations/app/home/home.dart';
+import 'package:beautiful_destinations/app/navigation_menu/navigation_menu.dart';
+import 'package:beautiful_destinations/app/notification/notification.dart';
 import 'package:dart_vlc/dart_vlc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
       onGenerateTitle: (context) => AppLocalizations.of(context)!.appName,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
+      debugShowCheckedModeBanner: false,
       locale: getLocal('en'),
       routes: {
         LandingView.routeName: (_) => const LandingView(),
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
         NavigationMenu.routeName: (_) => const NavigationMenu(),
         FilterView.routeName: (_) => const FilterView(),
         DetailView.routeName: (_) => const DetailView(),
-        ExploreView.routeName: (_) => const ExploreView(),
+        TiktokVideoView.routeName: (_) => const TiktokVideoView(),
       },
       theme: ThemeData(
         fontFamily: "manrope",

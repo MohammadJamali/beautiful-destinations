@@ -10,16 +10,16 @@ import 'package:flutter/material.dart'
 
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart'
 //     show FontAwesomeIcons, IconDataBrands, IconDataRegular, IconDataSolid;
-import 'package:beautiful_destinations/models/enums/contact_host.dart'
+import 'package:beautiful_destinations/repositories/models/enums/contact_host.dart'
     show ContactHost;
-import 'package:beautiful_destinations/models/enums/icon_class.dart'
+import 'package:beautiful_destinations/repositories/models/enums/icon_class.dart'
     show IconClass;
 
 import 'package:flutter/widgets.dart'
     show BuildContext, IconData, MediaQueryData;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'
     show AppLocalizations;
-import 'package:beautiful_destinations/models/enums/screen_type.dart';
+import 'package:beautiful_destinations/repositories/models/enums/screen_type.dart';
 
 extension IconClassExtension on IconClass {
   // NOTE:
