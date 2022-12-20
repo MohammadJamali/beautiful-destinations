@@ -216,12 +216,16 @@ class _FloatingBottomNavbarState extends State<FloatingBottomNavbar>
                                 .map(
                                   (index, tab) => MapEntry(
                                     index,
-                                    Center(
-                                      child: Icon(
-                                        tab.icon,
-                                        color: _tabController!.index == index
-                                            ? widget.color
-                                            : widget.unselectedColor,
+                                    Tooltip(
+                                      message: tab.text,
+                                      triggerMode: TooltipTriggerMode.longPress,
+                                      child: Center(
+                                        child: Icon(
+                                          tab.icon,
+                                          color: _tabController!.index == index
+                                              ? widget.color
+                                              : widget.unselectedColor,
+                                        ),
                                       ),
                                     ),
                                   ),

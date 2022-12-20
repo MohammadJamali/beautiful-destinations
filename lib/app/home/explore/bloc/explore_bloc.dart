@@ -14,6 +14,7 @@ class ExploreBloc extends Bloc<ExploreEvent, ExploreState> {
   ExploreBloc(
     this._repository,
   ) : super(const ExploreState()) {
+    on<ExploreFetched>(_onFetched);
     on<ExploreCategoriesFetched>(_onCategoriesFetched);
     on<ExplorePopularFetched>(_onPopularFetched);
     on<ExploreFeatureFetched>(_onFeatureFetched);
@@ -21,20 +22,37 @@ class ExploreBloc extends Bloc<ExploreEvent, ExploreState> {
 
   final PlaceRepository _repository;
 
-  Future<void> _onCategoriesFetched(
-    ExploreCategoriesFetched event,
+  Future<void> _onFetched(
+    ExploreFetched event,
     Emitter<ExploreState> emit,
   ) async {
-    emit(state.copyWith(placeCategoriesStatus: BlocStatus.loading));
+    emit(state.copyWith(categoriesStatus: BlocStatus.loading));
     try {
       emit(
         state.copyWith(
-          placeCategoriesStatus: BlocStatus.success,
+          categoriesStatus: BlocStatus.success,
           categories: await _repository.categories(),
         ),
       );
     } catch (e) {
-      emit(state.copyWith(placeCategoriesStatus: BlocStatus.failure));
+      emit(state.copyWith(categoriesStatus: BlocStatus.failure));
+    }
+  }
+
+  Future<void> _onCategoriesFetched(
+    ExploreCategoriesFetched event,
+    Emitter<ExploreState> emit,
+  ) async {
+    emit(state.copyWith(categoriesStatus: BlocStatus.loading));
+    try {
+      emit(
+        state.copyWith(
+          categoriesStatus: BlocStatus.success,
+          categories: await _repository.categories(),
+        ),
+      );
+    } catch (e) {
+      emit(state.copyWith(categoriesStatus: BlocStatus.failure));
     }
   }
 

@@ -13,27 +13,33 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  dio: ^4.0.0
-  bloc: ^8.1.0
-  intl: ^0.17.0
   badges: ^2.0.3
-  retrofit: ^3.0.1
-  equatable: ^2.0.5
+  shimmer: ^2.0.0
   timelines: ^0.1.0
-  share_plus: ^6.3.0
   like_button: ^2.0.5
-  flutter_svg: ^1.1.6
-  flutter_bloc: ^8.1.1
-  url_launcher: ^6.1.6
-  auto_size_text: ^3.0.0
-  json_annotation: ^4.5.0
   cupertino_icons: ^1.0.2
-  flutter_blurhash: ^0.7.0
   dropdown_button2: ^1.9.2
-  json_serializable: ^6.2.0
+  flutter_blurhash: ^0.7.0
+  cached_network_image: ^3.2.2
   scroll_snap_list: 
     path: dependencies/scroll_snap_list
-  # font_awesome_flutter: ^10.2.1
+
+  dio: ^4.0.0
+  intl: ^0.17.0
+  share_plus: ^6.3.0
+  flutter_svg: ^1.1.6
+  url_launcher: ^6.1.6
+  json_annotation: ^4.5.0
+  json_serializable: ^6.2.0
+
+  bloc: ^8.1.0
+  equatable: ^2.0.5
+  flutter_bloc: ^8.1.1
+
+  firebase_core: ^2.3.0
+  firebase_auth: ^4.2.1
+  cloud_firestore: ^4.1.0
+  firebase_analytics: ^10.0.7
 
   dart_vlc: ^0.4.0
   video_player: ^2.4.8
@@ -41,11 +47,11 @@ dependencies:
   video_player_macos: 1.0.6
 
 dev_dependencies:
-  retrofit_generator: any
-  build_runner: 
+  build_runner:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  retrofit_generator: any
 
 flutter:
   generate: true

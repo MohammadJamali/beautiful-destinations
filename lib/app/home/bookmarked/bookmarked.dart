@@ -8,6 +8,7 @@ import 'package:beautiful_destinations/repositories/models/place_option.dart';
 import 'package:beautiful_destinations/app/book/detail.dart';
 import 'package:beautiful_destinations/app/constant.dart';
 import 'package:beautiful_destinations/app/home/widgets/bottom_nav_bar/navbar.dart';
+import 'package:beautiful_destinations/widgets/headline.dart';
 import 'package:beautiful_destinations/widgets/row_place_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -123,20 +124,7 @@ class _BookmarkViewState extends State<BookmarkView> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 32.0,
-                  bottom: 16,
-                  left: 24,
-                  right: 24,
-                ),
-                child: Text(
-                  _localizations.history,
-                  style: _theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              Headline(text: _localizations.history),
               ...snapList
                   .take(2)
                   .map(
@@ -175,6 +163,7 @@ class _BookmarkViewState extends State<BookmarkView> {
                     ),
                   )
                   .toList(),
+              Headline(text: _localizations.bookmarked),
               Padding(
                 padding: const EdgeInsets.only(
                   top: 32.0,

@@ -1,4 +1,4 @@
-package com.beautifuldestinations
+package demo.beautifuldestinations
 
 import io.flutter.embedding.android.FlutterActivity
 

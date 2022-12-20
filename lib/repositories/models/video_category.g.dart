@@ -12,7 +12,7 @@ PlaceCategoryModel _$PlaceCategoryModelFromJson(Map<String, dynamic> json) =>
       title: json['title'] as String,
       description: json['description'] as String,
       blurhash: json['blurhash'] as String,
-      thumbnails: json['thumbnails'] as String,
+      imageUrl: json['imageUrl'] as String,
     );
 
 Map<String, dynamic> _$PlaceCategoryModelToJson(PlaceCategoryModel instance) =>
@@ -21,5 +21,5 @@ Map<String, dynamic> _$PlaceCategoryModelToJson(PlaceCategoryModel instance) =>
       'title': instance.title,
       'description': instance.description,
       'blurhash': instance.blurhash,
-      'thumbnails': instance.thumbnails,
+      'imageUrl': instance.imageUrl,
     };

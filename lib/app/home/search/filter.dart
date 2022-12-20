@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:beautiful_destinations/widgets/headline.dart';
 import 'package:dropdown_button2/custom_dropdown_button2.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -124,20 +125,7 @@ class _FilterViewState extends State<FilterView> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 16.0,
-                      bottom: 16,
-                      left: 24,
-                      right: 24,
-                    ),
-                    child: Text(
-                      _localizations.category,
-                      style: _theme.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  Headline(text: _localizations.category),
                   Center(
                     child: SizedBox(
                       width: 300,
@@ -180,20 +168,7 @@ class _FilterViewState extends State<FilterView> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 16.0,
-                      bottom: 16,
-                      left: 24,
-                      right: 24,
-                    ),
-                    child: Text(
-                      _localizations.accommodationType,
-                      style: _theme.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  Headline(text: _localizations.accommodationType),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: DropdownButtonFormField2(

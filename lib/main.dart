@@ -9,15 +9,31 @@ import 'package:beautiful_destinations/app/landing/landing.dart';
 import 'package:beautiful_destinations/app/home/home.dart';
 import 'package:beautiful_destinations/app/navigation_menu/navigation_menu.dart';
 import 'package:beautiful_destinations/app/notification/notification.dart';
+import 'package:beautiful_destinations/repositories/place/place_repository.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dart_vlc/dart_vlc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   if (Platform.isLinux || Platform.isWindows) {
     DartVLC.initialize();
   }
-  runApp(const MyApp());
+  runApp(
+    RepositoryProvider(
+      create: (BuildContext context) => PlaceRepository(
+        FirebaseFirestore.instance,
+      ),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

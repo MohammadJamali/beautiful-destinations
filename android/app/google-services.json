@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "997144983657",
+    "project_id": "tourism-app-27c37",
+    "storage_bucket": "tourism-app-27c37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997144983657:android:a1744b617e9fb5d32e0af8",
+        "android_client_info": {
+          "package_name": "com.beautifuldestinations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997144983657-3vm9s2sgcfqopgar5o7ldt39umtg2d92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPL1cvVkjqYVzj-BgMzBxVAnXMSG6odFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997144983657-3vm9s2sgcfqopgar5o7ldt39umtg2d92.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "997144983657-cc0dk9jadkkegjmk0jdubrfetk0s0237.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.beautifuldestinations"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997144983657:android:b4e54d7d549ba5442e0af8",
+        "android_client_info": {
+          "package_name": "demo.beautifuldestinations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997144983657-3vm9s2sgcfqopgar5o7ldt39umtg2d92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPL1cvVkjqYVzj-BgMzBxVAnXMSG6odFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997144983657-3vm9s2sgcfqopgar5o7ldt39umtg2d92.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "997144983657-cc0dk9jadkkegjmk0jdubrfetk0s0237.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.beautifuldestinations"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

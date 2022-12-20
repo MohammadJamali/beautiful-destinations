@@ -7,14 +7,14 @@ part 'video_category.g.dart';
 @JsonSerializable()
 class PlaceCategoryModel extends PlaceModel {
   final String blurhash;
-  final String thumbnails;
+  final String imageUrl;
 
   const PlaceCategoryModel({
     required String id,
     required String title,
     required String description,
     required this.blurhash,
-    required this.thumbnails,
+    required this.imageUrl,
   }) : super(id: id, title: title, description: description);
 
   @override

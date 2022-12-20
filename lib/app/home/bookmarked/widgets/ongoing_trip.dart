@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:beautiful_destinations/extensions/enum_extension.dart';
 import 'package:beautiful_destinations/app/book/detail.dart';
 import 'package:flutter/material.dart';
@@ -205,10 +204,13 @@ class _OnGoingTripWidgetState extends State<OnGoingTripWidget> {
                             SizedBox(
                               width: 70,
                               height: 20,
-                              child: AutoSizeText(
-                                timeline.date,
-                                style: _theme.textTheme.bodyText1?.copyWith(
-                                  fontWeight: FontWeight.bold,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  timeline.date,
+                                  style: _theme.textTheme.bodyText1?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ),

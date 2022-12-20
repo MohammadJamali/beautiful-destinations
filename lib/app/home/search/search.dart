@@ -3,6 +3,7 @@ import 'package:beautiful_destinations/extensions/enum_extension.dart';
 import 'package:beautiful_destinations/repositories/models/enums/screen_type.dart';
 import 'package:beautiful_destinations/app/constant.dart';
 import 'package:beautiful_destinations/app/home/widgets/bottom_nav_bar/navbar.dart';
+import 'package:beautiful_destinations/widgets/headline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -133,17 +134,12 @@ class _SearchViewState extends State<SearchView> {
                   ],
                 ),
               ),
-              Padding(
+              Headline(
+                text: _localizations.recent,
                 padding: const EdgeInsets.only(
                   bottom: 16,
                   left: 24,
                   right: 24,
-                ),
-                child: Text(
-                  _localizations.recent,
-                  style: _theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
               ),
               Padding(
@@ -164,20 +160,7 @@ class _SearchViewState extends State<SearchView> {
                       .toList(),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 16.0,
-                  bottom: 16,
-                  left: 24,
-                  right: 24,
-                ),
-                child: Text(
-                  _localizations.suggestions,
-                  style: _theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              Headline(text: _localizations.suggestions),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: GridView.count(

@@ -3,34 +3,34 @@ part of 'explore_bloc.dart';
 @immutable
 class ExploreState extends Equatable {
   const ExploreState({
-    this.featurePlacesStatus = BlocStatus.initial,
-    this.popularPlacesStatus = BlocStatus.initial,
-    this.placeCategoryStatus = BlocStatus.initial,
-    this.placeCategory = const [],
-    this.featurePlaces = const [],
-    this.popularPlaces = const [],
+    this.featureStatus = BlocStatus.initial,
+    this.popularsStatus = BlocStatus.initial,
+    this.categoriesStatus = BlocStatus.initial,
+    this.categories = const [],
+    this.features = const [],
+    this.populars = const [],
   });
 
-  final BlocStatus placeCategoryStatus;
-  final BlocStatus featurePlacesStatus;
-  final BlocStatus popularPlacesStatus;
+  final BlocStatus categoriesStatus;
+  final BlocStatus featureStatus;
+  final BlocStatus popularsStatus;
 
-  final List<PlaceCategoryModel> placeCategory;
-  final List<PlaceModel> featurePlaces;
-  final List<PlaceModel> popularPlaces;
+  final List<PlaceCategoryModel> categories;
+  final List<PlaceModel> features;
+  final List<PlaceModel> populars;
 
   @override
   List<Object?> get props => [
-        featurePlacesStatus,
-        popularPlacesStatus,
-        placeCategoryStatus,
-        placeCategory,
-        featurePlaces,
-        popularPlaces,
+        featureStatus,
+        popularsStatus,
+        categoriesStatus,
+        categories,
+        features,
+        populars,
       ];
 
   ExploreState copyWith({
-    BlocStatus? placeCategoriesStatus,
+    BlocStatus? categoriesStatus,
     BlocStatus? featureStatus,
     BlocStatus? popularsStatus,
     List<PlaceCategoryModel>? categories,
@@ -38,11 +38,11 @@ class ExploreState extends Equatable {
     List<PlaceModel>? populars,
   }) =>
       ExploreState(
-        featurePlacesStatus: featureStatus ?? this.featurePlacesStatus,
-        popularPlacesStatus: popularsStatus ?? this.popularPlacesStatus,
-        placeCategoryStatus: placeCategoriesStatus ?? this.placeCategoryStatus,
-        placeCategory: categories ?? this.placeCategory,
-        featurePlaces: features ?? this.featurePlaces,
-        popularPlaces: populars ?? this.popularPlaces,
+        featureStatus: featureStatus ?? this.featureStatus,
+        popularsStatus: popularsStatus ?? this.popularsStatus,
+        categoriesStatus: categoriesStatus ?? this.categoriesStatus,
+        categories: categories ?? this.categories,
+        features: features ?? this.features,
+        populars: populars ?? this.populars,
       );
 }

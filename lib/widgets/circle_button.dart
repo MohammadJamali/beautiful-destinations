@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class CircleIconButton extends StatelessWidget {
@@ -34,9 +33,9 @@ class CircleIconButton extends StatelessWidget {
         children: [
           icon,
           Expanded(
-            child: AutoSizeText(
+            child: Text(
               text!,
-              minFontSize: 3,
+              // minFontSize: 3,
               textAlign: TextAlign.center,
               style: textStyle,
             ),
