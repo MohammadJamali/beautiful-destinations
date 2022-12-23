@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class IconTextFormField extends StatefulWidget {
+class IconTextField extends StatefulWidget {
+  final Key? textFieldKey;
   final AsyncCallback? iconCallback;
   final Widget icon;
   final String? hint;
+  final String? errorText;
 
   final double dividerIntent;
   final double height;
@@ -18,11 +20,16 @@ class IconTextFormField extends StatefulWidget {
 
   final TextInputType? keyboardType;
 
-  const IconTextFormField({
+  final void Function(String)? onChanged;
+
+  const IconTextField({
     super.key,
     required this.icon,
     required this.deactiveColor,
     required this.focusColor,
+    this.errorText,
+    this.onChanged,
+    this.textFieldKey,
     this.keyboardType,
     this.backgroundColor,
     this.backgroundFocusColor,
@@ -33,11 +40,14 @@ class IconTextFormField extends StatefulWidget {
     this.hint,
   });
 
-  IconTextFormField.sizedIcon({
+  IconTextField.sizedIcon({
     super.key,
     required IconData icon,
     required this.deactiveColor,
     required this.focusColor,
+    this.errorText,
+    this.onChanged,
+    this.textFieldKey,
     this.keyboardType,
     this.backgroundColor,
     this.backgroundFocusColor,
@@ -56,10 +66,10 @@ class IconTextFormField extends StatefulWidget {
         );
 
   @override
-  State<IconTextFormField> createState() => _IconTextFormFieldState();
+  State<IconTextField> createState() => _IconTextFieldState();
 }
 
-class _IconTextFormFieldState extends State<IconTextFormField> {
+class _IconTextFieldState extends State<IconTextField> {
   final FocusNode focusNode = FocusNode();
 
   bool hasFocus = false;
@@ -114,16 +124,18 @@ class _IconTextFormFieldState extends State<IconTextFormField> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: TextFormField(
+              child: TextField(
                 focusNode: focusNode,
                 obscureText: widget.obscureText,
                 keyboardType: widget.keyboardType,
+                onChanged: widget.onChanged,
                 decoration: InputDecoration(
                   hintText: widget.hint,
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.zero,
                   isDense: true,
                   alignLabelWithHint: true,
+                  errorText: widget.errorText,
                 ),
               ),
             ),

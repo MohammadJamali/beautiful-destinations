@@ -1,6 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:beautiful_destinations/app/home/explore/explore.dart';
-import 'package:beautiful_destinations/app/navigation_menu/navigation_menu.dart';
+import 'package:beautiful_destinations/app/navigation/menu.dart';
 import 'package:beautiful_destinations/app/notification/notification.dart';
 import 'package:beautiful_destinations/app/home/widgets/bottom_nav_bar/item.dart';
 import 'package:beautiful_destinations/app/home/widgets/bottom_nav_bar/navbar.dart';

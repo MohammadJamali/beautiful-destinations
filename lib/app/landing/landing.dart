@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:beautiful_destinations/app/authentication/login.dart';
+import 'package:beautiful_destinations/app/authentication/view/login.dart';
 import 'package:beautiful_destinations/app/landing/widgets/custom_shape.dart';
 import 'package:beautiful_destinations/widgets/background_video_player/base.dart';
 import 'package:flutter/material.dart';

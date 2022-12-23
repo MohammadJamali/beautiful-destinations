@@ -1,4 +1,3 @@
-import 'package:beautiful_destinations/repositories/failures/place_failures.dart';
 import 'package:beautiful_destinations/repositories/models/place.dart';
 import 'package:beautiful_destinations/repositories/models/video_category.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,7 +9,7 @@ class PlaceRepository {
     try {
       return List.empty();
     } catch (e, s) {
-      throw PlaceFailures(e, s);
+      throw Exception(e);
     }
   }
 
@@ -18,7 +17,7 @@ class PlaceRepository {
     try {
       return List.empty();
     } catch (e, s) {
-      throw PlaceFailures(e, s);
+      throw Exception(e);
     }
   }
 
@@ -26,7 +25,7 @@ class PlaceRepository {
     try {
       return List.empty();
     } catch (e, s) {
-      throw PlaceFailures(e, s);
+      throw Exception(e);
     }
   }
 
@@ -34,7 +33,7 @@ class PlaceRepository {
     try {
       return List.empty();
     } catch (e, s) {
-      throw PlaceFailures(e, s);
+      throw Exception(e);
     }
   }
 }
