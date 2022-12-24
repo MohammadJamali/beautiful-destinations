@@ -13,7 +13,7 @@ class Password extends FormzInput<String, PasswordValidationError> {
   @override
   PasswordValidationError? validator(String? value) {
     // to enable OTP login
-    if (value == null) return null;
+    if (value == null || value == '') return null;
 
     return _passwordRegExp.hasMatch(value)
         ? null

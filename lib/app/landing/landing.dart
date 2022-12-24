@@ -1,5 +1,6 @@
 import 'dart:math';
-import 'package:beautiful_destinations/app/authentication/view/login.dart';
+import 'package:beautiful_destinations/app/authentication/authentication.dart';
+import 'package:beautiful_destinations/app/authentication/view/singin.dart';
 import 'package:beautiful_destinations/app/landing/widgets/custom_shape.dart';
 import 'package:beautiful_destinations/widgets/background_video_player/base.dart';
 import 'package:flutter/material.dart';
@@ -78,7 +79,7 @@ class _LandingViewState extends State<LandingView> {
 
   void onPlaneDepartureButtonPressed() {
     Navigator.of(context).popAndPushNamed(
-      LoginView.routeName,
+      SingInPage.routeName,
     );
   }
 

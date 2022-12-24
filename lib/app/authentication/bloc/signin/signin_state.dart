@@ -1,13 +1,17 @@
-part of 'login_bloc.dart';
+part of 'signin_bloc.dart';
 
-class LoginState extends Equatable {
-  const LoginState({
+class SignInState extends Equatable {
+  const SignInState({
     this.email = const Email.pure(),
     this.password = const Password.pure(),
     this.status = FormzStatus.pure,
     this.errorMessage,
+    this.anonymously = false,
+    this.otpSingIn = false,
   });
 
+  final bool otpSingIn;
+  final bool anonymously;
   final Email email;
   final Password password;
   final FormzStatus status;
@@ -16,13 +20,17 @@ class LoginState extends Equatable {
   @override
   List<Object> get props => [email, password, status];
 
-  LoginState copyWith({
+  SignInState copyWith({
     Email? email,
     Password? password,
     FormzStatus? status,
     String? errorMessage,
+    bool? anonymously,
+    bool? otpSingIn,
   }) {
-    return LoginState(
+    return SignInState(
+      otpSingIn: otpSingIn ?? this.otpSingIn,
+      anonymously: anonymously ?? this.anonymously,
       email: email ?? this.email,
       password: password ?? this.password,
       status: status ?? this.status,

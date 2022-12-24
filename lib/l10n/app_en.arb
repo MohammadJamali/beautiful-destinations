@@ -17,6 +17,7 @@
     "authentication": "Authentication",
     "password" : "Password",
     "signin": "Sign In",
+    "passwordlessSingin": "Passwordless SingIn",
     "or": "Or",
     "google": "Google",
     "apple": "Apple",

@@ -11,6 +11,10 @@ class SendSignInLinkToEmailFailure implements Exception {
         return const SendSignInLinkToEmailFailure(
           'Thrown if anonymous accounts are not enabled.',
         );
+      case 'quota-exceeded':
+        return const SendSignInLinkToEmailFailure(
+          'Sorry but the sign-up quota of our service is exceeded. Please try agian tommorow, or you can contact our supprt.',
+        );
       default:
         return const SendSignInLinkToEmailFailure();
     }

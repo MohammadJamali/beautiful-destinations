@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:beautiful_destinations/repositories/authentication/models/enums/signin_method.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'models/user.dart';
@@ -152,6 +153,26 @@ class AuthenticationRepository {
     }
   }
 
+  Future<bool> isUserRegistered({
+    required String email,
+  }) async {
+    final signInMethods = await fetchSignInMethodsForEmail(email: email);
+    return signInMethods.isNotEmpty;
+  }
+
+  Future<List<SignInMethod>> fetchSignInMethodsForEmail({
+    required String email,
+  }) async {
+    final signInMethodsStr =
+        await _firebaseAuth.fetchSignInMethodsForEmail(email);
+
+    return signInMethodsStr
+        .map((method) => SignInMethodExtension.fromJson(method))
+        .where((method) => method != null)
+        .map((method) => method!)
+        .toList();
+  }
+
   /// Send signs in link to the provided [email].
   ///
   /// Throws a [SendSignInLinkToEmailFailure] if an exception occurs.
@@ -162,12 +183,17 @@ class AuthenticationRepository {
       await _firebaseAuth.sendSignInLinkToEmail(
         email: email,
         actionCodeSettings: ActionCodeSettings(
-          url: 'tourism-app-27c37.firebaseapp.com',
+          handleCodeInApp: true,
+          iOSBundleId: 'demo.beautifuldestinations',
+          androidPackageName: 'demo.beautifuldestinations',
+          androidInstallApp: true,
+          androidMinimumVersion: "1",
+          url: 'https://tourismapp.ir',
         ),
       );
     } on firebase_auth.FirebaseAuthException catch (e) {
       throw SendSignInLinkToEmailFailure.fromCode(e.code);
-    } catch (_) {
+    } catch (e) {
       throw const SendSignInLinkToEmailFailure();
     }
   }
@@ -190,6 +216,13 @@ class AuthenticationRepository {
 
 extension on firebase_auth.User {
   UserModel get toUser {
-    return UserModel(id: uid, email: email, name: displayName, photo: photoURL);
+    return UserModel(
+      id: uid,
+      email: email,
+      name: displayName,
+      photo: photoURL,
+      isAnonymous: isAnonymous,
+      emailVerified: emailVerified,
+    );
   }
 }

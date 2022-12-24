@@ -18,6 +18,7 @@
     "authentication": "احراز هویت",
     "password" : "کلمه عبور",
     "signin": "ورود به حساب",
+    "passwordlessSingin": "ورود با کد یکبار مصرف",
     "or": "يا",
     "google": "گوگل",
     "apple": "اپل",

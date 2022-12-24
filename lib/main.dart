@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:beautiful_destinations/app/authentication/authentication.dart';
 import 'package:beautiful_destinations/app/authentication/view/auth_code.dart';
-import 'package:beautiful_destinations/app/authentication/view/login.dart';
 import 'package:beautiful_destinations/app/book/detail.dart';
 import 'package:beautiful_destinations/app/home/search/filter.dart';
 import 'package:beautiful_destinations/app/navigation/settings/bloc/settings_bloc.dart';
@@ -107,7 +107,14 @@ class TourismApp extends StatelessWidget {
             ),
           ),
         ],
-        child: BlocBuilder<SettingsBloc, SettingsState>(
+        child: BlocConsumer<SettingsBloc, SettingsState>(
+          buildWhen: (previous, current) =>
+              previous.authStatus != current.authStatus,
+          listener: (context, state) {
+            // if(state.authStatus == AuthenticationStatus.unauthenticated) {
+            //   Naviga
+            // }
+          },
           builder: (BuildContext context, state) => MaterialApp(
             onGenerateTitle: (context) => AppLocalizations.of(context)!.appName,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -116,8 +123,8 @@ class TourismApp extends StatelessWidget {
             locale: state.locale,
             routes: {
               LandingView.routeName: (_) => const LandingView(),
-              LoginView.routeName: (_) => const LoginView(),
-              AuthCodeView.routeName: (_) => const AuthCodeView(),
+              SingInPage.routeName: (_) => const SingInPage(),
+              AuthCodePage.routeName: (_) => const AuthCodeView(),
               MainView.routeName: (_) => const MainView(),
               NotificationView.routeName: (_) => const NotificationView(),
               NavigationMenu.routeName: (_) => const NavigationMenu(),
@@ -128,7 +135,9 @@ class TourismApp extends StatelessWidget {
             theme: getBrightness(state.brightness),
             home: state.authStatus == AuthenticationStatus.unauthenticated
                 ? const LandingView()
-                : const MainView(),
+                : state.user.emailVerified == true
+                    ? const MainView()
+                    : const VerifyEmailPage(),
           ),
         ),
       ),
