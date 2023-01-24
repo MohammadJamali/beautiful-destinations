@@ -12,9 +12,7 @@ class VerifyEmailView extends StatelessWidget {
   const VerifyEmailView({super.key});
 
   Future<void> sendVerficationCode(BuildContext context, String email) async {
-    final cubit = context.read<SignInCubit>();
-    cubit.emailChanged(email);
-    await cubit.sendSignInLinkToEmail();
+    await context.read<SignInCubit>().sendEmailVerification();
   }
 
   @override
@@ -23,7 +21,7 @@ class VerifyEmailView extends StatelessWidget {
     final user = context.read<SettingsBloc>().state.user;
 
     final mediaQuery = MediaQuery.of(context);
-    final localizations = AppLocalizations.of(context);
+    final localizations = AppLocalizations.of(context)!;
     final buttonSize = Size(min(300, mediaQuery.size.width * 0.8), 60);
 
     return BlocListener<SignInCubit, SignInState>(
@@ -62,7 +60,7 @@ class VerifyEmailView extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'Please Verify Your Email Address',
+                          localizations.verifyEmail,
                           style: theme.textTheme.headline5?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
@@ -71,11 +69,15 @@ class VerifyEmailView extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 8.0, bottom: 128),
                           child: Text(
-                            'We will send a verification email to ${user.email}. Please enter the verification code you receive in the next page.',
+                            localizations.verifyEmailInfo.replaceFirst(
+                              '{0}',
+                              user.email!,
+                            ),
                             maxLines: 4,
                             overflow: TextOverflow.fade,
-                            style: theme.textTheme.caption?.copyWith(
+                            style: theme.textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.bold,
+                              color: Colors.grey,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -95,7 +97,7 @@ class VerifyEmailView extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'Send Verification Code',
+                      localizations.sendVerificationCode,
                       style: theme.textTheme.headline6?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,

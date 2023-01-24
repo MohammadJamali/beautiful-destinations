@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:beautiful_destinations/repositories/authentication/failures/signin_failure.dart';
 import 'package:beautiful_destinations/repositories/authentication/models/enums/signin_method.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'models/user.dart';
 import 'failures/failures.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:beautiful_destinations/repositories/cache.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter/foundation.dart' show kIsWeb, visibleForTesting;
@@ -60,23 +62,27 @@ class AuthenticationRepository {
   /// Creates a new user with the provided [email] and [password].
   ///
   /// Throws a [SignUpWithEmailAndPasswordFailure] if an exception occurs.
-  Future<void> signUp({required String email, required String password}) async {
+  Future<void> signUp({
+    required String email,
+    required String password,
+    required AppLocalizations localizations,
+  }) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
     } on firebase_auth.FirebaseAuthException catch (e) {
-      throw SignUpWithEmailAndPasswordFailure.fromCode(e.code);
+      throw SignInFailure.fromCode(e.code, localizations);
     } catch (_) {
-      throw const SignUpWithEmailAndPasswordFailure();
+      throw const SignInFailure();
     }
   }
 
   /// Starts the Sign In with Google Flow.
   ///
   /// Throws a [LogInWithGoogleFailure] if an exception occurs.
-  Future<void> signInWithGoogle() async {
+  Future<void> signInWithGoogle(AppLocalizations localizations) async {
     try {
       late final firebase_auth.AuthCredential credential;
       if (isWeb) {
@@ -96,9 +102,9 @@ class AuthenticationRepository {
 
       await _firebaseAuth.signInWithCredential(credential);
     } on firebase_auth.FirebaseAuthException catch (e) {
-      throw LogInWithGoogleFailure.fromCode(e.code);
+      throw SignInFailure.fromCode(e.code, localizations);
     } catch (_) {
-      throw const LogInWithGoogleFailure();
+      throw const SignInFailure();
     }
   }
 
@@ -108,6 +114,7 @@ class AuthenticationRepository {
   Future<void> signInWithEmailAndPassword({
     required String email,
     required String password,
+    required AppLocalizations localizations,
   }) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
@@ -115,20 +122,20 @@ class AuthenticationRepository {
         password: password,
       );
     } on firebase_auth.FirebaseAuthException catch (e) {
-      throw SignInWithEmailAndPasswordFailure.fromCode(e.code);
+      throw SignInFailure.fromCode(e.code, localizations);
     } catch (_) {
-      throw const SignInWithEmailAndPasswordFailure();
+      throw const SignInFailure();
     }
   }
 
   /// Signs in as a guest
   ///
   /// Throws a [SignInAnonymouslyFailure] if an exception occurs.
-  Future<void> signInAnonymously() async {
+  Future<void> signInAnonymously(AppLocalizations localizations) async {
     try {
       await _firebaseAuth.signInAnonymously();
     } on firebase_auth.FirebaseAuthException catch (e) {
-      throw SignInAnonymouslyFailure.fromCode(e.code);
+      throw SignInAnonymouslyFailure.fromCode(e.code, localizations);
     } catch (_) {
       throw const SignInAnonymouslyFailure();
     }
@@ -136,10 +143,11 @@ class AuthenticationRepository {
 
   /// Signs in with the provided [email] and [emailLink].
   ///
-  /// Throws a [SignInWithEmailLinkFailure] if an exception occurs.
+  /// Throws a [SignInFailure] if an exception occurs.
   Future<void> signInWithEmailLink({
     required String email,
     required String emailLink,
+    required AppLocalizations localizations,
   }) async {
     try {
       await _firebaseAuth.signInWithEmailLink(
@@ -147,9 +155,9 @@ class AuthenticationRepository {
         emailLink: emailLink,
       );
     } on firebase_auth.FirebaseAuthException catch (e) {
-      throw SignInWithEmailLinkFailure.fromCode(e.code);
+      throw SignInFailure.fromCode(e.code, localizations);
     } catch (_) {
-      throw const SignInWithEmailLinkFailure();
+      throw const SignInFailure();
     }
   }
 
@@ -173,28 +181,47 @@ class AuthenticationRepository {
         .toList();
   }
 
+  Future<void> sendEmailVerification(AppLocalizations localizations) async {
+    try {
+      await _firebaseAuth.currentUser!.sendEmailVerification(
+        ActionCodeSettings(
+          handleCodeInApp: true,
+          androidPackageName: 'demo.beautifuldestinations',
+          androidInstallApp: true,
+          androidMinimumVersion: "1",
+          url: 'https://tourism-app-27c37.firebaseapp.com',
+        ),
+      );
+    } on firebase_auth.FirebaseAuthException catch (e) {
+      throw SignInFailure.fromCode(e.code, localizations);
+    } catch (_) {
+      throw const SignInFailure();
+    }
+  }
+
   /// Send signs in link to the provided [email].
   ///
   /// Throws a [SendSignInLinkToEmailFailure] if an exception occurs.
   Future<void> sendSignInLinkToEmail({
     required String email,
+    required AppLocalizations localizations,
   }) async {
     try {
       await _firebaseAuth.sendSignInLinkToEmail(
         email: email,
         actionCodeSettings: ActionCodeSettings(
           handleCodeInApp: true,
-          iOSBundleId: 'demo.beautifuldestinations',
+          // iOSBundleId: 'demo.beautifuldestinations',
           androidPackageName: 'demo.beautifuldestinations',
           androidInstallApp: true,
           androidMinimumVersion: "1",
-          url: 'https://tourismapp.ir',
+          url: 'https://tourism-app-27c37.firebaseapp.com',
         ),
       );
     } on firebase_auth.FirebaseAuthException catch (e) {
-      throw SendSignInLinkToEmailFailure.fromCode(e.code);
-    } catch (e) {
-      throw const SendSignInLinkToEmailFailure();
+      throw SendEmailLinkFailure.fromCode(e.code, localizations);
+    } catch (_) {
+      throw const SendEmailLinkFailure();
     }
   }
 

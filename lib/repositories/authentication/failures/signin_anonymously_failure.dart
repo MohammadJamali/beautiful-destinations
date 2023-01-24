@@ -1,21 +1,26 @@
-class SignInAnonymouslyFailure implements Exception {
+import 'signin_failure.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+class SignInAnonymouslyFailure extends SignInFailure implements Exception {
   const SignInAnonymouslyFailure([
-    this.message = 'An unknown exception occurred.',
-  ]);
+    String message = 'An unknown exception occurred.',
+  ]) : super(message);
 
   /// Create an authentication message
   /// from a firebase authentication exception code.
-  factory SignInAnonymouslyFailure.fromCode(String code) {
+  @override
+  factory SignInAnonymouslyFailure.fromCode(
+    String code,
+    AppLocalizations localizations,
+  ) {
     switch (code) {
       case 'operation-not-allowed':
-        return const SignInAnonymouslyFailure(
-          'Thrown if anonymous accounts are not enabled.',
+        return SignInAnonymouslyFailure(
+          localizations.failureAnonymousNotEnabled,
         );
       default:
-        return const SignInAnonymouslyFailure();
+        return SignInFailure.fromCode(code, localizations)
+            as SignInAnonymouslyFailure;
     }
   }
-
-  /// The associated error message.
-  final String message;
 }
